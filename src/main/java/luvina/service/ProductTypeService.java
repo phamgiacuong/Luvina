@@ -6,29 +6,20 @@ import org.springframework.data.jpa.repository.Modifying;
 import java.util.List;
 
 public interface ProductTypeService {
-
+    // tim toan bo product_type
     Iterable<ProductType> findAll();
 
+    //tim kiem product_type theo product_type_cd hoac name
     List<ProductType> search(String q);
 
+    //tìm kiem 1 product_type theo product_type_cd
     ProductType findProductTypeCd(String productTypeCd);
 
+    //luu product_type
     void save(ProductType productType);
 
+    //xoa 1 product_type theo product_type_cd
     @Modifying
     void deleteByProductTypeCd(String productTypeCd);
-
-//    Iterable<ProductType> findAll();
-//
-//    List<ProductType> search(String q);
-//
-//    ProductType findByProductTypeCd(String id);
-//
-////    ProductType findByName(String name);
-//
-//    void save(ProductType productType);
-//
-//
-////    void deleteById(String id);
 
 }

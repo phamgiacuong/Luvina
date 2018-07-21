@@ -43,9 +43,4 @@ public class ProductTypeServiceImpl implements ProductTypeService {
         productTypeRepository.deleteProductType(productTypeCd);
     }
 
-//    @Override
-//    public void deleteById(String id) {
-//        productTypeRepository.deleteById(id);
-//    }
-
 }
