@@ -1,8 +1,9 @@
-package luvina.service;
+package luvina.service.Impl;
 
 import java.util.List;
 
 import luvina.model.ProductType;
+import luvina.service.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

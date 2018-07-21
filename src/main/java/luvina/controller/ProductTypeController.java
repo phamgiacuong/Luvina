@@ -23,25 +23,25 @@ public class ProductTypeController {
     @GetMapping("/producttype")
     public String index(Model model) {
         model.addAttribute("producttypes", productTypeService.findAll());
-        return "list";
+        return "productTypeList";
     }
 
     @GetMapping("/producttype/create")
     public String create(Model model) {
         model.addAttribute("producttype", new ProductType());
-        return "form";
+        return "productTypeForm";
     }
 
     @GetMapping("/producttype/{productTypeCd}/edit")
     public String edit(@PathVariable String productTypeCd, Model model) {
         model.addAttribute("producttype", productTypeService.findProductTypeCd(productTypeCd));
-        return "form";
+        return "productTypeForm";
     }
 
     @PostMapping("/producttype/save")
     public String save(@Valid ProductType productType, BindingResult result, RedirectAttributes redirect) {
         if (result.hasErrors()) {
-            return "form";
+            return "productTypeForm";
         }
         productTypeService.save(productType);
         redirect.addFlashAttribute("success", "Saved producttype successfully!");
@@ -62,7 +62,7 @@ public class ProductTypeController {
         }
 
         model.addAttribute("producttypes", productTypeService.search(searchs));
-        return "list";
+        return "productTypeList";
     }
 
 }
