@@ -1,7 +1,6 @@
 package luvina.repository;
 
 import luvina.model.Product;
-import luvina.model.ProductType;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
