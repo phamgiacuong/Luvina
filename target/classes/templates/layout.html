@@ -41,6 +41,17 @@
      class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
+            <ul class="nav nav-pills" role="tablist">
+                <li role="presentation"><a class="navbar-brand" href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                <li role="presentation"><a class="navbar-brand" th:href="@{/product}" aria-controls="product" role="tab">Product</a></li>
+                <li role="presentation"><a class="navbar-brand" th:href="@{/producttype}" aria-controls="producttype" role="tab">ProductType</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">This is Home content</div>
+                <div role="tabpanel" class="tab-pane" id="product">Product</div>
+                <div role="tabpanel" class="tab-pane" id="producttype">ProductType</div>
+                <div role="tabpanel" class="tab-pane" id="settings">This is Settings content</div>
+            </div>
             <button type="button" class="navbar-toggle collapsed"
                     data-toggle="collapse" data-target="#navbar" aria-expanded="false"
                     aria-controls="navbar">
@@ -49,7 +60,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" th:href="@{/producttype}">Product</a>
+
+
+            <!--<a class="navbar-brand" th:href="@{/product}"></a>-->
         </div>
     </div>
 </nav>
