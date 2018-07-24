@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>Producttype</title>
+    <title>WebBanHang</title>
 
     <link href="../static/images/logo.png" th:href="@{/images/logo.png}"
           rel="shortcut icon" />
@@ -45,13 +45,8 @@
                 <li role="presentation"><a class="navbar-brand" href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
                 <li role="presentation"><a class="navbar-brand" th:href="@{/product}" aria-controls="product" role="tab">Product</a></li>
                 <li role="presentation"><a class="navbar-brand" th:href="@{/producttype}" aria-controls="producttype" role="tab">ProductType</a></li>
+                <li role="presentation"><a class="navbar-brand" th:href="@{/customer}" aria-controls="customer" role="tab">Customer</a></li>
             </ul>
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="home">This is Home content</div>
-                <div role="tabpanel" class="tab-pane" id="product">Product</div>
-                <div role="tabpanel" class="tab-pane" id="producttype">ProductType</div>
-                <div role="tabpanel" class="tab-pane" id="settings">This is Settings content</div>
-            </div>
             <button type="button" class="navbar-toggle collapsed"
                     data-toggle="collapse" data-target="#navbar" aria-expanded="false"
                     aria-controls="navbar">

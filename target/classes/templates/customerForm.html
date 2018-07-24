@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<nav th:replace="layout :: header"></nav>
+
+<div class="container main-content form">
+    <div class="row">
+        <form action="#" th:action="@{/customer/save}" th:object="${customer}"
+              method="POST" novalidate="novalidate">
+            <!--<input type="hidden" th:field="*{customerCd}" />-->
+            <div class="form-group">
+                <label>address</label>
+                <input type="text" class="form-control"
+                       th:field="*{address}"  />
+            </div>
+            <div class="form-group">
+                <label>city</label>
+                <input type="text" class="form-control"
+                       th:field="*{city}"  />
+            </div>
+            <div class="form-group">
+                <label>cust_type_cd</label>
+                <input type="text" class="form-control"
+                       th:field="*{cust_type_cd}"  />
+            </div>
+            <div class="form-group">
+                <label>fed_id</label>
+                <input type="text" class="form-control"
+                       th:field="*{fed_id}"  />
+            </div>
+            <div class="form-group">
+                <label>postal_code</label>
+                <input type="text" class="form-control"
+                       th:field="*{postal_code}"  />
+            </div>
+            <div class="form-group">
+                <label>state</label>
+                <input type="text" class="form-control"
+                       th:field="*{state}"  />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div><!-- /.container -->
+
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>
+

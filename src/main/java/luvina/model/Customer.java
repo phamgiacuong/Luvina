@@ -2,10 +2,7 @@ package luvina.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 //import javax.persistence.JoinColumn;
 //import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
@@ -17,6 +14,7 @@ import lombok.AllArgsConstructor;
 public class Customer {
     @Id
     @Column(name = "cust_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cust_id;
     @Column(name = "address")
     private String address;

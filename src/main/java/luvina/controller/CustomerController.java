@@ -9,7 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -24,7 +23,33 @@ public class CustomerController {
         model.addAttribute("customers", customerService.findAll());
         return "customerList";
     }
-    
-    
+
+    @GetMapping("/customer/{cust_id}/delete")
+    public String delete(@PathVariable Integer cust_id, RedirectAttributes redirect) {
+        customerService.deleteByCust_id(cust_id);
+        redirect.addFlashAttribute("success", "Deleted customer successfully!");
+        return "redirect:/customer";
+    }
+    @GetMapping("/customer/{cust_id}/edit")
+    public String edit(@PathVariable Integer cust_id, Model model) {
+        model.addAttribute("customer", customerService.findCust_ID(cust_id));
+        return "customerForm";
+    }
+
+    @PostMapping("/customer/save")
+    public String save(@Valid Customer customer, BindingResult result, RedirectAttributes redirect) {
+        if (result.hasErrors()) {
+            return "customerForm";
+        }
+        customerService.save(customer);
+        redirect.addFlashAttribute("success", "Saved customer successfully!");
+        return "redirect:/customer";
+    }
+
+    @GetMapping("/customer/create")
+    public String create(Model model) {
+        model.addAttribute("customer", new Customer());
+        return "customerForm";
+    }
     
 }
