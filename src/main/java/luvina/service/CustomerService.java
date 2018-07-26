@@ -14,6 +14,8 @@ public interface CustomerService {
     Customer findCust_ID (Integer cust_id);
 
     //luu customer
+    void saves(Customer customer);
+
     void save(Customer customer);
 
     //xoa 1 customer theo Cust_id

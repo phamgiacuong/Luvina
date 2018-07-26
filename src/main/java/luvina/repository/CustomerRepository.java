@@ -19,10 +19,19 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer>{
     @Query("DELETE FROM Customer c WHERE c.cust_id =:cust_id")
     void deleteByCust_id(@Param("cust_id") Integer cust_id);
 
-    @Query("SELECT c FROM Customer c WHERE c.address LIKE CONCAT('%',:search,'%')")
+    @Query("SELECT c FROM Customer c WHERE c.address LIKE CONCAT('%',:search,'%') or c.city LIKE CONCAT('%',:search,'%') or c.cust_type_cd LIKE CONCAT('%',:search,'%') or " +
+            "c.fed_id LIKE CONCAT('%',:search,'%') or c.postal_code LIKE CONCAT('%',:search,'%') or state LIKE CONCAT('%',:search,'%') ")
     List<Customer> search(@Param("search") String search);
 
     @Query("SELECT user FROM Customer user WHERE user.userName =:userName")
     Customer findUser(@Param("userName") String userName);
 
+    @Transactional
+    @Modifying
+    @Query("UPDATE Customer c SET c.address =:address , c.city =:city, c.cust_type_cd =:cust_type_cd," +
+          "  c.fed_id =:fed_id, c.postal_code=:postal_code, c.state =:state" +
+          "  WHERE cust_id =:cust_id")
+    void saves(@Param("cust_id") Integer cust_id,@Param("address") String address,@Param("city") String city,
+        @Param("cust_type_cd") String cust_type_cd,@Param("fed_id") String fed_id,@Param("postal_code") String postal_code,
+        @Param("state") String state);
 }

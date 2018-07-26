@@ -17,5 +17,5 @@ public class ProductType {
     private String name;
 //    @OneToOne(mappedBy = "product_type")
 //    private Product product;
-//    public ProductType(){}
+    public ProductType(){}
 }
