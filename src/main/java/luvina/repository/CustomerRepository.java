@@ -22,4 +22,7 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer>{
     @Query("SELECT c FROM Customer c WHERE c.address LIKE CONCAT('%',:search,'%')")
     List<Customer> search(@Param("search") String search);
 
+    @Query("SELECT user FROM Customer user WHERE user.userName =:userName")
+    Customer findUser(@Param("userName") String userName);
+
 }

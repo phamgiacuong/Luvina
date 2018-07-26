@@ -51,5 +51,13 @@ public class CustomerController {
         model.addAttribute("customer", new Customer());
         return "customerForm";
     }
+
+    @GetMapping("/login")
+    public String login(Customer user ) {
+        if (user != null) {
+            return "redirect:/product";
+        }
+        return "/login";
+    }
     
 }

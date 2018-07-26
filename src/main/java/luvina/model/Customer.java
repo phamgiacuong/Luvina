@@ -28,6 +28,10 @@ public class Customer {
     private String postal_code;
     @Column(name = "state")
     private String state;
+    @Column(name = "user_name")
+    String userName;
+    @Column(name = "password")
+    String passWord;
 //    @OneToOne
 //    @JoinColumn(name = "cust_id")
 //    private Individual Individual;

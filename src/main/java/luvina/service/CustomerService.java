@@ -18,4 +18,6 @@ public interface CustomerService {
 
     //xoa 1 customer theo Cust_id
     void deleteByCust_id(Integer cust_id);
+
+    Customer findCustomer(String userName);
 }
