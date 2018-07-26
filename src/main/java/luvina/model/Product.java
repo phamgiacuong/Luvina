@@ -3,10 +3,7 @@ package luvina.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -25,6 +22,9 @@ public class Product {
     String name;
     @Column(name = "product_type_cd")
     String productTypeCd;
+//    @OneToOne
+//    @JoinColumn(name = "product_type_product_type_cd")
+//    private ProductType productType;
 
     public Product(){}
 }

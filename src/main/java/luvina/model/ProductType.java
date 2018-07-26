@@ -15,5 +15,7 @@ public class ProductType {
     private String productTypeCd;
     @Column(name = "name")
     private String name;
-    public ProductType(){}
+//    @OneToOne(mappedBy = "product_type")
+//    private Product product;
+//    public ProductType(){}
 }
