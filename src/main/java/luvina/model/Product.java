@@ -22,10 +22,12 @@ public class Product {
     String name;
     @Column(name = "product_type_cd")
     String productTypeCd;
+
     
     @OneToOne
     @JoinColumn(name = "productType_productTypeCd")
     private ProductType productType;
+
 
     public Product(){}
 }
