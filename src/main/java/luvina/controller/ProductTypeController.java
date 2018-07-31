@@ -29,19 +29,19 @@ public class ProductTypeController {
     @GetMapping("/producttype/create")
     public String create(Model model) {
         model.addAttribute("producttype", new ProductType());
-        return "productTypeForm";
+        return "productTypeFormCreate";
     }
 
     @GetMapping("/producttype/{productTypeCd}/edit")
     public String edit(@PathVariable String productTypeCd, Model model) {
         model.addAttribute("producttype", productTypeService.findProductTypeCd(productTypeCd));
-        return "productTypeForm";
+        return "productTypeFormEdit";
     }
 
     @PostMapping("/producttype/save")
     public String save(@Valid ProductType productType, BindingResult result, RedirectAttributes redirect) {
         if (result.hasErrors()) {
-            return "productTypeForm";
+            return "productTypeFormEdit";
         }
         productTypeService.save(productType);
         redirect.addFlashAttribute("success", "Saved producttype successfully!");

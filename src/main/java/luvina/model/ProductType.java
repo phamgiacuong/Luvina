@@ -15,7 +15,7 @@ public class ProductType {
     private String productTypeCd;
     @Column(name = "name")
     private String name;
-//    @OneToOne(mappedBy = "product_type")
-//    private Product product;
+    @OneToOne(mappedBy = "productType", cascade = CascadeType.ALL)
+    private Product product;
     public ProductType(){}
 }

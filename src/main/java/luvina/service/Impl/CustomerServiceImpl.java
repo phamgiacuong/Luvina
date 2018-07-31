@@ -1,5 +1,6 @@
 package luvina.service.Impl;
 
+import luvina.model.Individual;
 import luvina.repository.CustomerRepository;
 import luvina.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,17 @@ public class CustomerServiceImpl implements CustomerService {
     public Iterable<Customer> findAll() {
         return customerRepository.findAll();
     }
-    
+    @Override
+    public List<Customer> findAll1(Integer cust_id) {
+        return customerRepository.findAll1(cust_id);
+    }
+    @Override
+    public List<Customer> findAll2(Integer cust_id) {
+        return customerRepository.findAll2(cust_id);
+    }
+
     @Override
     public List<Customer> search(String searchs) {
-
         return customerRepository.search(searchs);
     }
 
@@ -49,5 +57,5 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer findCustomer(String user) {
         return customerRepository.findUser(user);
     }
-    
+
 }

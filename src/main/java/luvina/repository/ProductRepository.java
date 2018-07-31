@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface ProductRepository extends CrudRepository<Product, Integer> {
+public interface ProductRepository extends CrudRepository<Product, String> {
     //tim kiem product theo cac tuoc tinh
     @Query("SELECT p FROM Product p WHERE p.productTypeCd LIKE CONCAT('%',:search,'%') OR p.name LIKE CONCAT('%',:search,'%') " +
             "OR p.productCd LIKE CONCAT('%',:search,'%')")
