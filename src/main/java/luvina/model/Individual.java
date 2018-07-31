@@ -17,43 +17,51 @@ public class Individual {
     private String l_name;
     @Id
     @Column(name = "cust_id")
+//    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer cust_id;
-//    @OneToOne(mappedBy = "individual")
+//    @OneToOne(mappedBy = "individual", cascade = CascadeType.ALL)
 //    Customer customer;
 
     public Individual() {
     }
 
-    public Integer getCust_id() {
-        return cust_id;
+    public Date getBirth_date() {
+        return birth_date;
     }
 
-    public Date getBirth() {
-        return birth_date;
+    public void setBirth_date(Date birth_date) {
+        this.birth_date = birth_date;
     }
 
     public String getF_name() {
         return f_name;
     }
 
-    public String getL_name() {
-        return l_name;
-    }
-
-    public void setCust_id(Integer cust_id) {
-        this.cust_id = cust_id;
-    }
-
-    public void setBirth(Date birth_date) {
-        this.birth_date = birth_date;
-    }
-
     public void setF_name(String f_name) {
         this.f_name = f_name;
+    }
+
+    public String getL_name() {
+        return l_name;
     }
 
     public void setL_name(String l_name) {
         this.l_name = l_name;
     }
 
+    public Integer getCust_id() {
+        return cust_id;
+    }
+
+    public void setCust_id(Integer cust_id) {
+        this.cust_id = cust_id;
+    }
+
+//    public Customer getCustomer() {
+//        return customer;
+//    }
+//
+//    public void setCustomer(Customer customer) {
+//        this.customer = customer;
+//    }
 }

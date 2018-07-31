@@ -16,4 +16,17 @@ public class IndividualServiceImpl implements IndividualService {
         return individualRespository.findAll();
     }
 
+    @Override
+    public void save(Individual individual){
+        individualRespository.save(individual);
+    }
+    public void saves(Individual individual){
+        individualRespository.saves(individual.getCust_id(),individual.getBirth_date(),individual.getF_name(),individual.getL_name());
+    }
+    @Override
+    public Individual findCust_ID (Integer cust_id){
+        return individualRespository.findCust_id(cust_id);
+    }
+
+
 }

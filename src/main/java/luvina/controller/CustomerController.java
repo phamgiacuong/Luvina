@@ -62,15 +62,6 @@ public class CustomerController {
         return "customerForm";
     }
 
-    @PostMapping("/customer/saves")
-    public String saves(@Valid Customer customer, BindingResult result, RedirectAttributes redirect) {
-        if (result.hasErrors()) {
-            return "customerForm";
-        }
-        customerService.saves(customer);
-        redirect.addFlashAttribute("success", "Saved customer successfully!");
-        return "redirect:/customer";
-    }
     @PostMapping("/customer/save")
     public String save(@Valid Customer customer, BindingResult result, RedirectAttributes redirect) {
         if (result.hasErrors()) {
@@ -81,6 +72,15 @@ public class CustomerController {
         return "redirect:/customer";
     }
 
+    @PostMapping("/customer/saves")
+    public String saves(@Valid Customer customer, BindingResult result, RedirectAttributes redirect) {
+        if (result.hasErrors()) {
+            return "customerForm";
+        }
+        customerService.saves(customer);
+        redirect.addFlashAttribute("success", "Saved customer successfully!");
+        return "redirect:/customer";
+    }
     @GetMapping("/customer/{cust_id}/ind")
     public String ind(@PathVariable Integer cust_id, Model model) {
         model.addAttribute("customers", customerService.findAll1(cust_id));
@@ -92,5 +92,10 @@ public class CustomerController {
         return "businessList";
     }
 
+    @GetMapping("/customer/{cust_id}/off")
+    public String off(@PathVariable Integer cust_id, Model model) {
+        model.addAttribute("customers", customerService.findAll3(cust_id));
+        return "officerList";
+    }
 
 }
