@@ -40,6 +40,7 @@ public class ProductTypeController {
 
     @PostMapping("/producttype/save")
     public String save(@Valid ProductType productType, BindingResult result, RedirectAttributes redirect) {
+        System.out.println("aaaa");
         if (result.hasErrors()) {
             return "productTypeFormEdit";
         }

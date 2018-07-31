@@ -43,6 +43,8 @@ public class ProductController {
             return "productForm";
         }
         productService.save(product);
+        System.out.println("aaaa");
+
         redirect.addFlashAttribute("success", "Saved product successfully!");
         return "redirect:/product";
     }

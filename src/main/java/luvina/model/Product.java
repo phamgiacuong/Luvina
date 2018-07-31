@@ -20,14 +20,22 @@ public class Product {
     Date dateRetired;
     @Column(name = "name")
     String name;
-    @Column(name = "product_type_cd")
-    String productTypeCd;
+//    @Column(name = "product_type_cd")
+//    String productTypeCd;
 
     
-    @OneToOne
-    @JoinColumn(name = "productType_productTypeCd")
+    @ManyToOne
+    @JoinColumn(name = "product_type_cd")
     private ProductType productType;
 
 
     public Product(){}
+
+//    public Product(String productCd, Date dateOffered, Date dateRetired, String name, String productTypeCd) {
+//        this.productCd = productCd;
+//        this.dateOffered = dateOffered;
+//        this.dateRetired = dateRetired;
+//        this.name = name;
+//        this.productTypeCd = productTypeCd;
+//    }
 }
