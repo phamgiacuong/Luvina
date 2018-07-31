@@ -1,7 +1,6 @@
 package luvina.repository;
 
 import luvina.model.Customer;
-import luvina.model.Individual;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -19,6 +18,8 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer>{
     List<Customer> findAll1(@Param("cust_id") Integer cust_id);
     @Query("SELECT c.business FROM Customer c Where c.business.cust_id =:cust_id")
     List<Customer> findAll2(@Param("cust_id") Integer cust_id);
+    @Query("SELECT c.officer FROM Customer c Where c.officer.cust_id =:cust_id")
+    List<Customer> findAll3(@Param("cust_id") Integer cust_id);
 
     @Transactional
     @Modifying

@@ -13,7 +13,6 @@ import lombok.AllArgsConstructor;
 public class Customer {
     @Id
     @Column(name = "cust_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cust_id;
     @Column(name = "address")
     private String address;
@@ -34,9 +33,9 @@ public class Customer {
     @OneToOne
     @JoinColumn(name = "cust_id")
     private Individual individual;
-//    @OneToOne
-//    @JoinColumn(name = "cust_id")
-//    Officer officer;
+    @OneToOne
+    @JoinColumn(name = "cust_id")
+    Officer officer;
     @OneToOne
     @JoinColumn(name = "cust_id")
     private Business business;
