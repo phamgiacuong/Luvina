@@ -7,10 +7,13 @@ public interface CustomerService {
     // tim toan bo customer
     Iterable<Customer> findAll();
 
+    List<Customer> findAll1(Integer cust_id);
+    List<Customer> findAll2(Integer cust_id);
+
     //tim kiem customer theo thuoc tinh
     List<Customer> search(String q);
 
-    //tìm kiem 1 product_ theo customerId
+    //tìm kiem 1 customer theo cust_Id
     Customer findCust_ID (Integer cust_id);
 
     //luu customer

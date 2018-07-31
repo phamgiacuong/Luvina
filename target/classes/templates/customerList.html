@@ -38,8 +38,10 @@
 					<th>fed_id</th>
 					<th>postal_code</th>
 					<th>state</th>
-					<th>Edit</th>
-					<th>Delete</th>
+                    <th>individual</th>
+                    <th>bussines</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -51,6 +53,8 @@
 					<td th:text="${customer.fed_id}"></td>
 					<td th:text="${customer.postal_code}"></td>
 					<td th:text="${customer.state}"></td>
+					<td><a th:href="@{/customer/{cust_id}/ind(cust_id=${customer.cust_id})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+					<td><a th:href="@{/customer/{cust_id}/bus(cust_id=${customer.cust_id})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
 					<td><a th:href="@{/customer/{cust_id}/edit(cust_id=${customer.cust_id})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
 					<td><a th:href="@{/customer/{cust_id}/delete(cust_id=${customer.cust_id})}"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>

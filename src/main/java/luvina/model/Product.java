@@ -23,7 +23,7 @@ public class Product {
     @Column(name = "product_type_cd")
     String productTypeCd;
 //    @OneToOne
-//    @JoinColumn(name = "product_type_product_type_cd")
+//    @JoinColumn(name = "product_type_cd")
 //    private ProductType productType;
 
     public Product(){}

@@ -1,6 +1,5 @@
 package luvina.model;
 
-import lombok.Data;
 
 import javax.persistence.*;
 //import javax.persistence.JoinColumn;
@@ -32,12 +31,21 @@ public class Customer {
     String userName;
     @Column(name = "password")
     String passWord;
+    @OneToOne
+    @JoinColumn(name = "cust_id")
+    private Individual individual;
 //    @OneToOne
 //    @JoinColumn(name = "cust_id")
-//    private Individual Individual;
+//    Officer officer;
+    @OneToOne
+    @JoinColumn(name = "cust_id")
+    private Business business;
     
     public Customer(){
     }
+
+    public Individual getIndividual() { return  individual; }
+
     public Integer getCust_id() {
         return cust_id;
     }
@@ -90,8 +98,5 @@ public class Customer {
         return state;
     }
 
-    public void setState(String state) {
-        this.state = state;
-    }
 }
 

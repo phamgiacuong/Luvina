@@ -80,4 +80,17 @@ public class CustomerController {
         redirect.addFlashAttribute("success", "Saved customer successfully!");
         return "redirect:/customer";
     }
+
+    @GetMapping("/customer/{cust_id}/ind")
+    public String ind(@PathVariable Integer cust_id, Model model) {
+        model.addAttribute("customers", customerService.findAll1(cust_id));
+        return "individualList";
+    }
+    @GetMapping("/customer/{cust_id}/bus")
+    public String bus(@PathVariable Integer cust_id, Model model) {
+        model.addAttribute("customers", customerService.findAll2(cust_id));
+        return "businessList";
+    }
+
+
 }

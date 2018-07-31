@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<nav th:replace="layout :: header"></nav>
+
+<div class="container main-content list">
+    <div th:if="${success}" class="row alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <span th:text="${success}"></span>
+    </div>
+
+    <th:block th:if="${#lists.isEmpty(customers)}">
+        <h3>No individual</h3>
+    </th:block>
+
+    <th:block th:unless="${#lists.isEmpty(customers)}">
+        <!--<div class="row">-->
+            <!--<a th:href="@{/individual/create}" class="btn btn-success pull-left">-->
+                <!--<span class="glyphicon glyphicon-plus"></span> Add new individual-->
+            <!--</a>-->
+            <!--<form class="form-inline pull-right" action="#" th:action="@{/individual/search}" method="GET">-->
+                <!--<div class="form-group">-->
+                    <!--<input type="text" class="form-control" name="searchs"-->
+                           <!--placeholder="Type individual name..." />-->
+                <!--</div>-->
+                <!--<button type="submit" class="btn btn-primary">Search</button>-->
+            <!--</form>-->
+        <!--</div>-->
+        <div class="row">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Cust_id</th>
+                    <th>BIRTH_DATE</th>
+                    <th>First_Name</th>
+                    <th>Last_Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="customer : ${customers}">
+                    <td th:text="${customer.getCust_id()}"></td>
+                    <td th:text="${customer.getBirth()}"></td>
+                    <td th:text="${customer.getF_name()}"></td>
+                    <td th:text="${customer.getL_name()}"></td>
+                    <td><a th:href="@{/customer/individual/{cust_id}/edit(cust_id=${customer.getCust_id()})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                    <td><a th:href="@{/customer/individual/{cust_id}/delete(cust_id=${customer.getCust_id()})}"><span class="glyphicon glyphicon-trash"></span></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </th:block>
+</div>
+<!-- /.container -->
+
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>
+
