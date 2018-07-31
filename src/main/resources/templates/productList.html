@@ -46,7 +46,7 @@
                     <td th:text="${product.dateOffered}"></td>
                     <td th:text="${product.dateRetired}"></td>
                     <td th:text="${product.name}"></td>
-                    <td th:text="${product.productTypeCd}"></td>
+                    <td th:text="${product.productType.productTypeCd}"></td>
                     <td><a th:href="@{/product/{productCd}/edit(productCd=${product.productCd})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
                     <td><a th:href="@{/product/{productCd}/delete(productCd=${product.productCd})}"><span class="glyphicon glyphicon-trash"></span></a></td>
                 </tr>

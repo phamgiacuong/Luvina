@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.text.CollationElementIterator;
+import java.util.Collection;
 
 @AllArgsConstructor
 @Data
@@ -15,7 +17,7 @@ public class ProductType {
     private String productTypeCd;
     @Column(name = "name")
     private String name;
-//    @OneToOne(mappedBy = "product_type")
-//    private Product product;
+    @OneToMany(mappedBy = "productType", cascade = CascadeType.ALL)
+    private Collection<Product> products;
     public ProductType(){}
 }

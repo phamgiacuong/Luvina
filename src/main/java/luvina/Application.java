@@ -1,5 +1,9 @@
 package luvina;
 
+import luvina.model.Product;
+import luvina.repository.ProductRepository;
+import luvina.repository.ProductTypeRepository;
+import luvina.service.ProductService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,5 +18,6 @@ public class Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
+
 	}
 }
