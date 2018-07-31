@@ -1,17 +1,13 @@
 package luvina.model;
 
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
-
 import javax.persistence.*;
 import java.util.Date;
 
-@Data
+
 @AllArgsConstructor
 @Entity
 @Table (name = "Officer")
-
 public class Officer {
     @Column( name = "officer_id")
     Integer officer_id;
@@ -35,4 +31,11 @@ public class Officer {
     public Officer() {
     }
 
+    public Integer getOfficer_id() { return officer_id; }
+    public Date getEnd_date() { return end_date; }
+    public String getF_name() { return f_name; }
+    public String getL_name() { return l_name; }
+    public Date getState_date() { return state_date; }
+    public String getTitle() { return title; }
+    public Integer getCust_id() { return cust_id; }
 }

@@ -22,7 +22,9 @@
 			<form class="form-inline pull-right" action="#" th:action="@{/customer/search}" method="GET">
 				<div class="form-group">
 					<input type="text" class="form-control" name="searchs"
+
 						   placeholder="Type customer..." />
+
 				</div>
 				<button type="submit" class="btn btn-primary">Search</button>
 			</form>
@@ -40,6 +42,7 @@
 					<th>state</th>
                     <th>individual</th>
                     <th>bussines</th>
+                    <th>officer</th>
                     <th>Edit</th>
                     <th>Delete</th>
 				</tr>
@@ -55,6 +58,7 @@
 					<td th:text="${customer.state}"></td>
 					<td><a th:href="@{/customer/{cust_id}/ind(cust_id=${customer.cust_id})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
 					<td><a th:href="@{/customer/{cust_id}/bus(cust_id=${customer.cust_id})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+					<td><a th:href="@{/customer/{cust_id}/off(cust_id=${customer.cust_id})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
 					<td><a th:href="@{/customer/{cust_id}/edit(cust_id=${customer.cust_id})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
 					<td><a th:href="@{/customer/{cust_id}/delete(cust_id=${customer.cust_id})}"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>

@@ -19,14 +19,19 @@ public class CustomerServiceImpl implements CustomerService {
     public Iterable<Customer> findAll() {
         return customerRepository.findAll();
     }
+
     @Override
     public List<Customer> findAll1(Integer cust_id) {
         return customerRepository.findAll1(cust_id);
     }
+
     @Override
     public List<Customer> findAll2(Integer cust_id) {
         return customerRepository.findAll2(cust_id);
     }
+
+    @Override
+    public List<Customer> findAll3(Integer cust_id) { return customerRepository.findAll3(cust_id); }
 
     @Override
     public List<Customer> search(String searchs) {

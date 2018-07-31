@@ -9,6 +9,7 @@ public interface CustomerService {
 
     List<Customer> findAll1(Integer cust_id);
     List<Customer> findAll2(Integer cust_id);
+    List<Customer> findAll3(Integer cust_id);
 
     //tim kiem customer theo thuoc tinh
     List<Customer> search(String q);
