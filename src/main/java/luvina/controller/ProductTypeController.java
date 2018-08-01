@@ -1,6 +1,8 @@
 package luvina.controller;
 
+import luvina.model.Product;
 import luvina.model.ProductType;
+import luvina.service.ProductService;
 import luvina.service.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,9 @@ public class ProductTypeController {
 
     @Autowired
     private ProductTypeService productTypeService;
+
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("/producttype")
     public String index(Model model) {
@@ -40,7 +45,6 @@ public class ProductTypeController {
 
     @PostMapping("/producttype/save")
     public String save(@Valid ProductType productType, BindingResult result, RedirectAttributes redirect) {
-        System.out.println("aaaa");
         if (result.hasErrors()) {
             return "productTypeFormEdit";
         }
@@ -51,9 +55,15 @@ public class ProductTypeController {
 
     @GetMapping("/producttype/{productTypeCd}/delete")
     public String delete(@PathVariable String productTypeCd, RedirectAttributes redirect) {
-        productTypeService.deleteByProductTypeCd(productTypeCd);
-        redirect.addFlashAttribute("success", "Deleted producttype successfully!");
-        return "redirect:/producttype";
+        ProductType productType = productTypeService.findProductTypeCd(productTypeCd);
+        if(productService.findProductTypeCd(productType.getProductTypeCd()) != null){
+            return "errorModal";
+        }
+        else {
+            productTypeService.deleteByProductTypeCd(productTypeCd);
+            redirect.addFlashAttribute("success", "Deleted producttype successfully!");
+            return "redirect:/producttype";
+        }
     }
 
     @GetMapping("/producttype/search")

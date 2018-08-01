@@ -15,6 +15,8 @@ public interface ProductService {
     //tìm kiem 1 product_ theo product_cd
     Product findProductCd(String productCd);
 
+    Product findProductTypeCd(String productTypeCd);
+
     //luu product_
     void save(Product product);
 

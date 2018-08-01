@@ -2,6 +2,7 @@ package luvina.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,8 +16,10 @@ public class Product {
     @Column(name = "product_cd")
     String productCd;
     @Column(name = "date_offered")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     Date dateOffered;
     @Column(name = "date_retired")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     Date dateRetired;
     @Column(name = "name")
     String name;
