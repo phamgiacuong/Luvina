@@ -1,11 +1,12 @@
 package luvina.service.Impl;
 
-import luvina.model.Individual;
 import luvina.repository.CustomerRepository;
 import luvina.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.hibernate.Session;
 
 import java.util.List;
 import luvina.model.Customer;
@@ -14,7 +15,7 @@ import luvina.model.Customer;
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
-    
+
     @Override
     public Iterable<Customer> findAll() {
         return customerRepository.findAll();
@@ -48,7 +49,9 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.saves(customer.getCust_id(),customer.getAddress(),customer.getCity(),customer.getCust_type_cd(),customer.getFed_id(),customer.getPostal_code(),customer.getState());
     }
 
-    public void save(Customer customer){ customerRepository.save(customer); }
+    public void save(Customer customer){
+        customerRepository.save(customer);
+    }
 
     @Override
     @Transactional
