@@ -1,17 +1,14 @@
 package luvina.model;
 
-
 import javax.persistence.*;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-//@Data
 @Entity
 @Table(name = "customer")
 public class Customer {
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "cust_id")
     private Integer cust_id;
     @Column(name = "address")
@@ -27,9 +24,9 @@ public class Customer {
     @Column(name = "state")
     private String state;
     @Column(name = "user_name")
-    String userName;
+    private String userName;
     @Column(name = "password")
-    String passWord;
+    private String passWord;
     @OneToOne
     @JoinColumn(name = "cust_id")
     private Individual individual;
@@ -97,5 +94,44 @@ public class Customer {
         return state;
     }
 
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
+
+    public void setIndividual(Individual individual) {
+        this.individual = individual;
+    }
+
+    public Officer getOfficer() {
+        return officer;
+    }
+
+    public void setOfficer(Officer officer) {
+        this.officer = officer;
+    }
+
+    public Business getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(Business business) {
+        this.business = business;
+    }
 }
 

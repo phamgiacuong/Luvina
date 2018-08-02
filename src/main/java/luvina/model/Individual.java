@@ -2,23 +2,22 @@ package luvina.model;
 
 import lombok.AllArgsConstructor;
 
-import java.util.Date;
+import java.sql.Date;
 import javax.persistence.*;
 
 @AllArgsConstructor
 @Entity
 @Table(name = "individual")
 public class Individual {
+    @Id
+    @Column(name = "cust_id")
+    private Integer cust_id;
     @Column(name = "birth_date")
     private Date birth_date;
     @Column(name = "first_name")
     private String f_name;
     @Column(name = "last_name")
     private String l_name;
-    @Id
-    @Column(name = "cust_id")
-//    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer cust_id;
 //    @OneToOne(mappedBy = "individual", cascade = CascadeType.ALL)
 //    Customer customer;
 
@@ -57,11 +56,4 @@ public class Individual {
         this.cust_id = cust_id;
     }
 
-//    public Customer getCustomer() {
-//        return customer;
-//    }
-//
-//    public void setCustomer(Customer customer) {
-//        this.customer = customer;
-//    }
 }

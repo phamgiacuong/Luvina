@@ -46,12 +46,9 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void saves(Customer customer) {
         customerRepository.saves(customer.getCust_id(),customer.getAddress(),customer.getCity(),customer.getCust_type_cd(),customer.getFed_id(),customer.getPostal_code(),customer.getState());
-//        return customer;
     }
 
-    public void save(Customer customer){
-        customerRepository.save(customer);
-    }
+    public void save(Customer customer){ customerRepository.save(customer); }
 
     @Override
     @Transactional

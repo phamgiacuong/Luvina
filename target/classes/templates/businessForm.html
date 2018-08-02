@@ -6,7 +6,7 @@
 
 <div class="container main-content form">
     <div class="row">
-        <form action="#" th:action="@{/individual/save}" th:object="${individual}"
+        <form action="#" th:action="@{/business/save}" th:object="${business}"
               method="POST" novalidate="novalidate">
             <!--<input type="hidden" th:field="*{customerCd}" />-->
             <div class="form-group">
@@ -15,19 +15,19 @@
                        th:field="*{cust_id}"   />
             </div>
             <div class="form-group">
-                <label>BIRTH_DATE</label>
+                <label>incorp_date</label>
                 <input type="text" class="form-control"
-                       th:field="*{birth_date}"   />
+                       th:field="*{incorp_date}"   />
             </div>
             <div class="form-group">
-                <label>First_Name</label>
+                <label>name</label>
                 <input type="text" class="form-control"
-                       th:field="*{f_name}"  />
+                       th:field="*{name}"  />
             </div>
             <div class="form-group">
-                <label>Last_Name</label>
+                <label>state_id</label>
                 <input type="text" class="form-control"
-                       th:field="*{l_name}"  />
+                       th:field="*{state_id}"  />
             </div>
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
