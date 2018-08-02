@@ -35,7 +35,7 @@ public class CustomerController {
     @GetMapping("/customer/create")
     public String create(Model model) {
         model.addAttribute("customer", new Customer());
-        return "customerForm";
+        return "customerFormCreate";
     }
 
     @GetMapping("/login")
@@ -62,12 +62,22 @@ public class CustomerController {
         return "customerForm";
     }
 
+    @PostMapping("/customer/create")
+    public String create(@Valid Customer customer, BindingResult result, RedirectAttributes redirect) {
+        if (result.hasErrors()) {
+            return "customerForm";
+        }
+        customerService.save(customer);
+        redirect.addFlashAttribute("success", "Saved customer successfully!");
+        return "redirect:/customer";
+    }
+
     @PostMapping("/customer/save")
     public String save(@Valid Customer customer, BindingResult result, RedirectAttributes redirect) {
         if (result.hasErrors()) {
             return "customerForm";
         }
-        customerService.save(customer);
+        customerService.saves(customer);
         redirect.addFlashAttribute("success", "Saved customer successfully!");
         return "redirect:/customer";
     }
