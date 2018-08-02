@@ -63,4 +63,9 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.findUser(user);
     }
 
+    @Override
+    public Customer login(String userName, String passWord) {
+        return customerRepository.login(userName,passWord);
+    }
+
 }

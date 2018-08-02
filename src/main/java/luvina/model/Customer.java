@@ -133,13 +133,7 @@ public class Customer {
     public void setBusiness(Business business) {
         this.business = business;
     }
-    public String getUser_name(){
-        return username;
-    }
-    
-    public String getPass_word(){
-        return password;
-    }
+
 
 }
 
