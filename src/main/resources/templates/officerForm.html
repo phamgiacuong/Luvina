@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<nav th:replace="layout :: header"></nav>
+
+<div class="container main-content form">
+    <div class="row">
+        <form action="#" th:action="@{/officer/save}" th:object="${officer}"
+              method="POST" novalidate="novalidate">
+            <!--<input type="hidden" th:field="*{customerCd}" />-->
+            <div class="form-group">
+                <label>CUST_ID</label>
+                <input type="text" class="form-control"
+                       th:field="*{cust_id}"   />
+            </div>
+            <div class="form-group">
+                <label>officer_id</label>
+                <input type="text" class="form-control"
+                       th:field="*{officer_id}"   />
+            </div>
+            <div class="form-group">
+                <label>end_date</label>
+                <input type="text" class="form-control"
+                       th:field="*{end_date}"  />
+            </div>
+            <div class="form-group">
+                <label>first_name</label>
+                <input type="text" class="form-control"
+                       th:field="*{f_name}"  />
+            </div>
+            <div class="form-group">
+                <label>last_name</label>
+                <input type="text" class="form-control"
+                       th:field="*{l_name}"  />
+            </div>
+            <div class="form-group">
+                <label>state_date</label>
+                <input type="text" class="form-control"
+                       th:field="*{state_date}"  />
+            </div>
+            <div class="form-group">
+                <label>title</label>
+                <input type="text" class="form-control"
+                       th:field="*{title}"  />
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div><!-- /.container -->
+
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>
+

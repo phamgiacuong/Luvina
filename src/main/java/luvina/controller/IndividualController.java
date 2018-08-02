@@ -33,11 +33,13 @@ public class IndividualController {
 
     @PostMapping("/individual/save")
     public String save(@Valid Individual individual, BindingResult result, RedirectAttributes redirect) {
-//        if (result.hasErrors()) {
-//            return "individualForm";
-//        }
-        individualService.saves(individual);
+        if (result.hasErrors()) {
+            return "individualForm";
+        }
+
+        Integer a = individual.getCust_id();
+        individualService.save(individual);
         redirect.addFlashAttribute("success", "Saved individual successfully!");
-        return "redirect:/customer/{cust_id}/ind";
+        return "redirect:/customer/" +a+"/ind" ;
     }
 }
