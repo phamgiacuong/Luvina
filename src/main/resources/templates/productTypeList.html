@@ -38,11 +38,34 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="producttype : ${producttypes}">
-                    <td th:text="${producttype.productTypeCd}"></td>
-                    <td th:text="${producttype.name}"></td>
-                    <td><a th:href="@{/producttype/{productTypeCd}/edit(productTypeCd=${producttype.productTypeCd})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                    <td><a th:href="@{/producttype/{productTypeCd}/delete(productTypeCd=${producttype.productTypeCd})}"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <tr th:each="productType : ${producttypes}">
+                    <td th:text="${productType.productTypeCd}"></td>
+                    <td th:text="${productType.name}"></td>
+                    <td><a th:href="@{/producttype/{productTypeCd}/edit(productTypeCd=${productType.productTypeCd})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                    <!--<td><a th:href="@{/producttype/{productTypeCd}/delete(productTypeCd=${producttype.productTypeCd})}"><span class="glyphicon glyphicon-trash"></span></a></td>-->
+                    <td><a data-toggle="modal" data-target="#modal-warning"
+                           th:attr="data-target='#modal-warning'+${productType.productTypeCd}"><span
+                            class="glyphicon glyphicon-trash"></span></a></td>
+                    <div class="modal modal-warning fade in" th:id="modal-warning+${productType.productTypeCd }">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span></button>
+                                    <h5 class="modal-title">Delete ProductType</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <h3>Are you sure want to delete this ProductType?</h3>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                                    <a type="button" class="btn btn-outline"
+                                       th:href="@{/producttype/{productTypeCd}/delete(productTypeCd=${productType.productTypeCd})}"><i
+                                            class="fa fa-check"></i>&nbsp;Yes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </tr>
                 </tbody>
             </table>

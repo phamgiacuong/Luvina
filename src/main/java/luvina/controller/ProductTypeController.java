@@ -1,6 +1,8 @@
 package luvina.controller;
 
+import luvina.model.Product;
 import luvina.model.ProductType;
+import luvina.service.ProductService;
 import luvina.service.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,9 @@ public class ProductTypeController {
     @Autowired
     private ProductTypeService productTypeService;
 
+    @Autowired
+    private ProductService productService;
+
     @GetMapping("/producttype")
     public String index(Model model) {
         model.addAttribute("producttypes", productTypeService.findAll());
@@ -29,19 +34,19 @@ public class ProductTypeController {
     @GetMapping("/producttype/create")
     public String create(Model model) {
         model.addAttribute("producttype", new ProductType());
-        return "productTypeForm";
+        return "productTypeFormCreate";
     }
 
     @GetMapping("/producttype/{productTypeCd}/edit")
     public String edit(@PathVariable String productTypeCd, Model model) {
         model.addAttribute("producttype", productTypeService.findProductTypeCd(productTypeCd));
-        return "productTypeForm";
+        return "productTypeFormEdit";
     }
 
     @PostMapping("/producttype/save")
     public String save(@Valid ProductType productType, BindingResult result, RedirectAttributes redirect) {
         if (result.hasErrors()) {
-            return "productTypeForm";
+            return "productTypeFormEdit";
         }
         productTypeService.save(productType);
         redirect.addFlashAttribute("success", "Saved producttype successfully!");
@@ -50,9 +55,15 @@ public class ProductTypeController {
 
     @GetMapping("/producttype/{productTypeCd}/delete")
     public String delete(@PathVariable String productTypeCd, RedirectAttributes redirect) {
-        productTypeService.deleteByProductTypeCd(productTypeCd);
-        redirect.addFlashAttribute("success", "Deleted producttype successfully!");
-        return "redirect:/producttype";
+        ProductType productType = productTypeService.findProductTypeCd(productTypeCd);
+        if(productService.findProductTypeCd(productType.getProductTypeCd()) != null){
+            return "errorModal";
+        }
+        else {
+            productTypeService.deleteByProductTypeCd(productTypeCd);
+            redirect.addFlashAttribute("success", "Deleted producttype successfully!");
+            return "redirect:/producttype";
+        }
     }
 
     @GetMapping("/producttype/search")

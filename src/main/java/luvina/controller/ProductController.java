@@ -38,11 +38,16 @@ public class ProductController {
     }
 
     @PostMapping("/product/save")
-    public String save(@Valid Product product, BindingResult result, RedirectAttributes redirect) {
+    public String save(Product product, BindingResult result, RedirectAttributes redirect) {
+        System.out.println("hghghg");
+
         if (result.hasErrors()) {
+            System.out.println(result.getAllErrors().get(0));
             return "productForm";
         }
         productService.save(product);
+        System.out.println("aaaa");
+
         redirect.addFlashAttribute("success", "Saved product successfully!");
         return "redirect:/product";
     }
