@@ -20,7 +20,7 @@ public interface ProductRepository extends CrudRepository<Product, String> {
     Product findProductCd(@Param("productCd") String productCd);
 
     @Query("SELECT p FROM Product p WHERE p.productType.productTypeCd =:productTypeCd")
-    Product findProductTypeCd(@Param("productTypeCd") String productTypeCd);
+    List<Product> findProductTypeCd(@Param("productTypeCd") String productTypeCd);
 
 
 

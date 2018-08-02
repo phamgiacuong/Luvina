@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product findProductTypeCd(String productTypeCd) {
+    public List<Product> findProductTypeCd(String productTypeCd) {
         return productRepository.findProductTypeCd(productTypeCd);
     }
 
