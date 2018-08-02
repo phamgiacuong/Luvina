@@ -38,14 +38,14 @@ public class CustomerController {
         return "customerFormCreate";
     }
 
-    @GetMapping("/login")
+    /*@GetMapping("/login")
     public String login(Customer user ) {
         if (user != null) {
             return "redirect:/customer";
         }
         return "/login";
     }
-
+*/
     @GetMapping("/customer/search")
     public String search(@RequestParam("searchs") String searchs, Model model) {
         if (searchs.equals("")) {
@@ -107,5 +107,12 @@ public class CustomerController {
         model.addAttribute("customers", customerService.findAll3(cust_id));
         return "officerList";
     }
+ @GetMapping("/login",method=RequestMethod.GET)
+    public String login(@RequestParam("userName"), @RequestParam ("passWord") ) {
+        Customer a = customerService.login(userName,passWord);
+        if(a!=NULL)
+            return :"redirect:/customer";
+        else return "/login"
 
+    }
 }

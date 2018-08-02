@@ -36,6 +36,7 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer>{
     @Query("SELECT user FROM Customer user WHERE user.userName =:userName")
     Customer findUser(@Param("userName") String userName);
 
+ 
     @Transactional
     @Modifying
     @Query("UPDATE Customer c SET c.address =:address , c.city =:city, c.cust_type_cd =:cust_type_cd," +
@@ -43,4 +44,7 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer>{
     void saves(@Param("cust_id") Integer cust_id,@Param("address") String address,@Param("city") String city,
         @Param("cust_type_cd") String cust_type_cd,@Param("fed_id") String fed_id,@Param("postal_code") String postal_code,
         @Param("state") String state);
+    
+     @Query("SELECT user FROM Customer user WHERE user.userName =:userName AND user.passWord =: passWord")
+    Customer login(@Param("userName,passWord") String userName,String passWord);
 }
