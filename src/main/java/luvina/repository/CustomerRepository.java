@@ -46,5 +46,5 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer>{
         @Param("state") String state);
     
      @Query("SELECT cust_id FROM Customer user WHERE user.userName =:userName AND user.passWord =:passWord")
-    Integer login(@Param("userName") String userName,@Param(("passWord")) String passWord);
+    Integer find_id(@Param("userName") String userName,@Param(("passWord")) String passWord);
 }

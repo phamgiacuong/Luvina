@@ -103,7 +103,8 @@ public class CustomerController {
 
     @GetMapping("/login") 
     public String login() {
-        return "login";
+        if(role != null) return "/login";
+        else return "/login_error";
     }
 
     

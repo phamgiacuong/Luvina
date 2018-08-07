@@ -64,11 +64,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
     public static int role ;  // Bien toan cuc , luu gia tri cust_id , the hien viec da dang nhap
     @Override
-    public boolean login(String userName, String passWord) {
+    public Boolean login(String userName, String passWord) {
 
-        role = customerRepository.login(username, password);
+        role = customerRepository.find_id(username, password);
 
-        if (role==null) return false;
+        if (role == null) return false;
 
         else return true;
     }
@@ -81,4 +81,4 @@ public class CustomerServiceImpl implements CustomerService {
 
     }
 
-}
+

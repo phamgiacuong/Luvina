@@ -26,7 +26,7 @@ public interface CustomerService {
     void deleteByCust_id(Integer cust_id);
 
     // Login thanh cong se tra ve gia tri cust_id 
-    Interger login(String userName, String passWord);
+    Boolean login(String userName, String passWord);
     
 
 
