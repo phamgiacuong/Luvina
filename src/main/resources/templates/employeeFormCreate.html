@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<nav th:replace="layout :: header"></nav>
+
+<div class="container main-content form">
+    <div class="row">
+        <form action="#" th:action="@{/employee/create}" th:object="${employee}"
+              method="POST" novalidate="novalidate">
+            <!--<input type="hidden" th:field="*{emp_id}" />-->
+            <!--<div class="form-group">-->
+                <!--<label>emp_id</label>-->
+                <!--<input type="text" class="form-control"-->
+                       <!--th:field="*{emp_id}"  />-->
+            <!--</div>-->
+            <div class="form-group">
+                <label>first_name</label>
+                <input type="text" class="form-control"
+                       th:field="*{first_name}"  />
+            </div>
+            <div class="form-group">
+                <label>last_name</label>
+                <input type="text" class="form-control"
+                       th:field="*{last_name}"  />
+            </div>
+            <div class="form-group">
+                <label>start_date</label>
+                <input type="text" class="form-control"
+                       th:field="*{start_date}"  />
+            </div>
+            <div class="form-group">
+                <label>title</label>
+                <input type="text" class="form-control"
+                       th:field="*{title}"  />
+            </div>
+            <div class="form-group">
+                <label>assigned_branch_id</label>
+                <input type="text" class="form-control"
+                       th:field="*{assigned_branch_id}"  />
+            </div>
+            <div class="form-group">
+                <label>dept_id</label>
+                <input type="text" class="form-control"
+                       th:field="*{dept_id}"  />
+            </div>
+            <div class="form-group">
+                <label>superior_emp_id</label>
+                <input type="text" class="form-control"
+                       th:field="*{superior_emp_id}"  />
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div><!-- /.container -->
+
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>
+
