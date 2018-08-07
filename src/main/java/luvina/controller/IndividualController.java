@@ -40,6 +40,6 @@ public class IndividualController {
         Integer a = individual.getCust_id();
         individualService.save(individual);
         redirect.addFlashAttribute("success", "Saved individual successfully!");
-        return "redirect:/customer/" +a+"/ind" ;
+        return "redirect:/individual/" +a+"/edit" ;
     }
 }

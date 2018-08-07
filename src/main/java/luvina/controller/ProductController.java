@@ -2,6 +2,7 @@ package luvina.controller;
 
 import luvina.model.Product;
 import luvina.service.ProductService;
+import luvina.service.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,9 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private ProductTypeService productTypeService;
+
     @GetMapping("/product")
     public String index(Model model) {
         model.addAttribute("products", productService.findAll());
@@ -28,25 +32,25 @@ public class ProductController {
     @GetMapping("/product/create")
     public String create(Model model) {
         model.addAttribute("product", new Product());
+        model.addAttribute("productTypes",productTypeService.findAll());
         return "productForm";
     }
 
     @GetMapping("/product/{productCd}/edit")
     public String edit(@PathVariable String productCd, Model model) {
         model.addAttribute("product", productService.findProductCd(productCd));
+        model.addAttribute("productTypes",productTypeService.findAll());
         return "productForm";
     }
 
     @PostMapping("/product/save")
     public String save(Product product, BindingResult result, RedirectAttributes redirect) {
-        System.out.println("hghghg");
 
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors().get(0));
             return "productForm";
         }
         productService.save(product);
-        System.out.println("aaaa");
 
         redirect.addFlashAttribute("success", "Saved product successfully!");
         return "redirect:/product";

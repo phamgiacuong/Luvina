@@ -38,7 +38,7 @@ public class BusinessController {
         Integer a = business.getCust_id();
         businessService.save(business);
         redirect.addFlashAttribute("success", "Saved business successfully!");
-        return "redirect:/customer/" +a+ "/bus";
+        return "redirect:/business/" +a+ "/edit";
     }
 }
 

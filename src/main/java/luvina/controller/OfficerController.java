@@ -33,7 +33,7 @@ public class OfficerController {
         Integer a = officer.getCust_id();
         officerService.save(officer);
         redirect.addFlashAttribute("success", "Saved Officer successfully!");
-        return "redirect:/customer/" +a+ "/off";
+        return "redirect:/officer/" +a+ "/edit";
     }
 }
 

@@ -34,7 +34,7 @@
 					<th>Cust_id</th>
 					<th>address</th>
 					<th>city</th>
-					<th>cust_type_cd</th>
+					<!--<th>cust_type_cd</th>-->
 					<th>fed_id</th>
 					<th>postal_code</th>
 					<th>state</th>
@@ -50,13 +50,65 @@
 					<td th:text="${customer.cust_id}"></td>
 					<td th:text="${customer.address}"></td>
 					<td th:text="${customer.city}"></td>
-					<td th:text="${customer.cust_type_cd}"></td>
+					<!--<td th:text="${customer.cust_type_cd}"></td>-->
 					<td th:text="${customer.fed_id}"></td>
 					<td th:text="${customer.postal_code}"></td>
 					<td th:text="${customer.state}"></td>
-					<td><a th:href="@{/customer/{cust_id}/ind(cust_id=${customer.cust_id})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-					<td><a th:href="@{/customer/{cust_id}/bus(cust_id=${customer.cust_id})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-					<td><a th:href="@{/customer/{cust_id}/off(cust_id=${customer.cust_id})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+					<td><a data-toggle="modal" data-target="#modal-warning" th:attr="data-target='#view'+${customer.cust_id}" th:href="@{/customer/{cust_id}/ind(cust_id=${customer.cust_id})}" > <span
+							class="glyphicon glyphicon-pencil"></span></a></td>
+					<td><a data-toggle="modal" data-target="#modal-warning" th:attr="data-target='#view1'+${customer.cust_id}"
+						   th:href="@{/customer/{cust_id}/bus(cust_id=${customer.cust_id})}"> <span
+							class="glyphicon glyphicon-pencil"></span></a></td>
+					<td><a data-toggle="modal" data-target="#modal-warning" th:attr="data-target='#view2'+${customer.cust_id}"
+						   th:href="@{/customer/{cust_id}/off(cust_id=${customer.cust_id})}"> <span
+							class="glyphicon glyphicon-pencil"></span></a></td>
+					<div class="modal modal-warning fade in" th:id="view+${customer.cust_id}"  >
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">×</span></button>
+									<h5 class="modal-title">view individual</h5>
+								</div>
+								<div class="modal-body"  >
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+									<a th:href="@{/customer/{cust_id}/ind(cust_id=${customer.cust_id})}"><span class="glyphicon glyphicon-pencil"></span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal modal-warning fade in" th:id="view1+${customer.cust_id}">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">×</span></button>
+									<h5 class="modal-title">view individual</h5>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+									<a th:href="@{/customer/{cust_id}/bus(cust_id=${customer.cust_id})}"><span class="glyphicon glyphicon-pencil"></span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal modal-warning fade in" th:id="view2+${customer.cust_id}">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">×</span></button>
+									<h5 class="modal-title">view individual</h5>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+									<a th:href="@{/customer/{cust_id}/off(cust_id=${customer.cust_id})}"><span class="glyphicon glyphicon-pencil"></span></a>
+								</div>
+							</div>
+						</div>
+					</div>
 					<td><a th:href="@{/customer/{cust_id}/edit(cust_id=${customer.cust_id})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
 					<td><a th:href="@{/customer/{cust_id}/delete(cust_id=${customer.cust_id})}"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>

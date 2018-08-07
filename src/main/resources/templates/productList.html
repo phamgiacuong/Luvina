@@ -20,11 +20,48 @@
             <a th:href="@{/product/create}" class="btn btn-success pull-left">
                 <span class="glyphicon glyphicon-plus"></span> Add new product
             </a>
-            <form class="form-inline pull-right" action="#" th:action="@{/product/search}" method="GET">
+        </div>
+        <div class="row">
+            <form class="form-inline pull-left" action="#" th:action="@{/product/search}" method="GET">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="searchs"
-                           placeholder="Type product name..."/>
+
+                    <div class="col-sm-2">
+                        <label for="focusedInput">ProductCd</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" id="focusedInput" type="text">
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label for="focusedInput">Name</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" id="focusednpu" type="text">
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label for="focusedInput">DateOffered</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" id="fcuseInput" type="text">
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label for="focusedInput">DateRetired</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" id="focuseInput" type="text">
+                    </div>
+
+
+                    <div class="col-sm-2">
+                        <label for="focusedInput">ProductTypeCd</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" id="focusedInpu" type="text">
+                    </div>
                 </div>
+
                 <button type="submit" class="btn btn-primary">Search</button>
             </form>
         </div>
@@ -65,7 +102,8 @@
                                     <h3>Are you sure want to delete this Product?</h3>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close
+                                    </button>
                                     <a type="button" class="btn btn-outline"
                                        th:href="@{/product/{productCd}/delete(productCd=${product.productCd})}"><i
                                             class="fa fa-check"></i>&nbsp;Yes</a>
