@@ -16,6 +16,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    
+
     @Override
     public Iterable<Customer> findAll() {
         return customerRepository.findAll();
@@ -58,14 +62,23 @@ public class CustomerServiceImpl implements CustomerService {
     public void deleteByCust_id(Integer cust_id) {
         customerRepository.deleteByCust_id(cust_id);
     }
+    public static int role ;  // Bien toan cuc , luu gia tri cust_id , the hien viec da dang nhap
     @Override
-    public Customer findCustomer(String user) {
-        return customerRepository.findUser(user);
+    public boolean login(String userName, String passWord) {
+
+        role = customerRepository.login(username, password);
+
+        if (role==null) return false;
+
+        else return true;
     }
 
-    @Override
-    public Customer login(String userName, String passWord) {
-        return customerRepository.login(userName,passWord);
+
+
+
+
+    
+
     }
 
 }

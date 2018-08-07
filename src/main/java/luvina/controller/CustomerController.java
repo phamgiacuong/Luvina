@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 
@@ -35,14 +36,7 @@ public class CustomerController {
         return "customerFormCreate";
     }
 
-    /*@GetMapping("/login")
-    public String login(Customer user ) {
-        if (user != null) {
-            return "redirect:/customer";
-        }
-        return "/login";
-    }
-*/
+
     @GetMapping("/customer/search")
     public String search(@RequestParam("searchs") String searchs, Model model) {
         if (searchs.equals("")) {
@@ -104,11 +98,15 @@ public class CustomerController {
         model.addAttribute("customers", customerService.findAll3(cust_id));
         return "officerList";
     }
- @GetMapping("/login")
-    public String login( ) {
-//        Customer customer = customerService.login(userName,passWord);
-//
-     return "login";
 
+    //dang nhap 
+
+    @GetMapping("/login") 
+    public String login() {
+        return "login";
     }
+
+    
+    
+
 }
