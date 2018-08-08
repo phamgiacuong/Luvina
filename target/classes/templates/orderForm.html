@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<nav th:replace="layout :: header"></nav>
+
+<div class="container main-content form">
+    <div class="row">
+        <form action="#" th:action="@{/product/buy}" th:object="${product}"
+              method="POST" novalidate="novalidate">
+            <!--<input type="hidden" th:field="*{productCd}" />-->
+            <div class="form-group">
+                <label>product_cd</label>
+                <input type="text" class="form-control" readonly="readonly"
+                       th:field="*{productCd}"  />
+            </div>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" readonly="readonly"
+                       th:field="*{name}"  />
+            </div><div class="form-group">
+                <label>Amount</label>
+                <input type="text" class="form-control"
+                       th:field="*{amount}"  />
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div><!-- /.container -->
+
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>
+

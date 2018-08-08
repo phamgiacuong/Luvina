@@ -31,14 +31,11 @@ public class Product {
     @JoinColumn(name = "product_type_cd")
     private ProductType productType;
 
+    @Transient
+    private int amount;
+
 
     public Product(){}
 
-//    public Product(String productCd, Date dateOffered, Date dateRetired, String name, String productTypeCd) {
-//        this.productCd = productCd;
-//        this.dateOffered = dateOffered;
-//        this.dateRetired = dateRetired;
-//        this.name = name;
-//        this.productTypeCd = productTypeCd;
-//    }
+
 }

@@ -76,6 +76,7 @@
                     <th>product_type_cd</th>
                     <th>Edit</th>
                     <th>Delete</th>
+                    <th>Buy</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -111,6 +112,8 @@
                             </div>
                         </div>
                     </div>
+                    <td><a th:href="@{/product/{productCd}/order(productCd=${product.productCd})}"><span
+                            class="glyphicon glyphicon-pencil"></span></a></td>
                 </tr>
                 </tbody>
             </table>
