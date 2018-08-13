@@ -63,4 +63,12 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.findUser(user);
     }
 
+    protected Customer user ;  // Bien toan cuc , luu gia tri user da dang nhap
+    @Override
+    public boolean login(String user_name, String password) {
+        
+        user = customerRepository.find_login(user_name, password);
+       if(user==null) return false;
+       else return true;
+    }
 }

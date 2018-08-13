@@ -43,4 +43,9 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer>{
     void saves(@Param("cust_id") Integer cust_id,@Param("address") String address,@Param("city") String city,
         @Param("cust_type_cd") String cust_type_cd,@Param("fed_id") String fed_id,@Param("postal_code") String postal_code,
         @Param("state") String state);
+    
+    @Transactional
+    @Modifying
+     @Query("SELECT user FROM Customer user WHERE user.user_name =:user_name AND user.password =:password")
+    Customer find_login(@Param("user_name") String user_name,@Param(("password")) String password);
 }

@@ -24,9 +24,9 @@ public class Customer {
     @Column(name = "state")
     private String state;
     @Column(name = "user_name")
-    private String userName;
+    private String user_name;
     @Column(name = "password")
-    private String passWord;
+    private String password;
     @OneToOne
     @JoinColumn(name = "cust_id")
     private Individual individual;
