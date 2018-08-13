@@ -3,6 +3,13 @@ package luvina.model;
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
+/*
+* Lu tru thong tin cua khach hang
+*
+* */
 @AllArgsConstructor
 @Entity
 @Table(name = "customer")
@@ -32,12 +39,28 @@ public class Customer {
     private Individual individual;
     @OneToOne
     @JoinColumn(name = "cust_id")
-    Officer officer;
+    private Officer officer;
     @OneToOne
     @JoinColumn(name = "cust_id")
     private Business business;
-    
+    @OneToMany(mappedBy = "custId")
+    private List<Account> listAccount;
+   //
     public Customer(){
+    }
+    /*
+    * Noi dung ham:
+    * Param1:
+    * Param2:
+    * return:
+    * */
+
+    public List<Account> getListAccount() {
+        return listAccount;
+    }
+
+    public void setListAccount(List<Account> listAccount) {
+        this.listAccount = listAccount;
     }
 
     public Individual getIndividual() { return  individual; }
@@ -133,5 +156,7 @@ public class Customer {
     public void setBusiness(Business business) {
         this.business = business;
     }
+
 }
+
 

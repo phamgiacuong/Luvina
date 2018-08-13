@@ -9,9 +9,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class AccTransactionServiceImpl implements AccTransactionService {
     @Autowired
-    AccTransactionRepository accTransactionRepository;
+    private AccTransactionRepository accTransactionRepository;
     @Override
     public void save(AccTransaction accTransaction) {
         accTransactionRepository.save(accTransaction);
     }
+
+//    public AccTransaction findAccId(Integer accountId) {
+//        return accTransactionRepository.findaccId(accountId);
+//    }
 }

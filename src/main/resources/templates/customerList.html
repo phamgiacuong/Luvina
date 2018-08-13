@@ -54,7 +54,8 @@
 					<td th:text="${customer.fed_id}"></td>
 					<td th:text="${customer.postal_code}"></td>
 					<td th:text="${customer.state}"></td>
-					<td><a data-toggle="modal" data-target="#modal-warning" th:attr="data-target='#view'+${customer.cust_id}" th:href="@{/customer/{cust_id}/ind(cust_id=${customer.cust_id})}" > <span
+					<td><a data-toggle="modal" data-target="#modal-warning" th:attr="data-target='#view'+${customer.cust_id}"
+						   th:href="@{/customer/{cust_id}/ind(cust_id=${customer.cust_id})}" > <span
 							class="glyphicon glyphicon-pencil"></span></a></td>
 					<td><a data-toggle="modal" data-target="#modal-warning" th:attr="data-target='#view1'+${customer.cust_id}"
 						   th:href="@{/customer/{cust_id}/bus(cust_id=${customer.cust_id})}"> <span

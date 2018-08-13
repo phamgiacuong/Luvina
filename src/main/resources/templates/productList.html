@@ -74,6 +74,7 @@
                     <th>date_retired</th>
                     <th>Name</th>
                     <th>product_type_cd</th>
+                    <th>price</th>
                     <th>Edit</th>
                     <th>Delete</th>
                     <th>Buy</th>
@@ -86,6 +87,7 @@
                     <td th:text="${product.dateRetired}"></td>
                     <td th:text="${product.name}"></td>
                     <td th:text="${product.productType.productTypeCd}"></td>
+                    <td th:text="${product.price}"></td>
                     <td><a th:href="@{/product/{productCd}/edit(productCd=${product.productCd})}"><span
                             class="glyphicon glyphicon-pencil"></span></a></td>
                     <td><a data-toggle="modal" data-target="#modal-warning"

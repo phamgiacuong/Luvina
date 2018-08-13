@@ -14,6 +14,9 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer>{
     @Query("SELECT c FROM Customer c WHERE c.cust_id =:cust_id")
     Customer findCust_id(@Param("cust_id") Integer cust_id);
 
+    @Query("SELECT c FROM Customer c WHERE c.individual.l_name =:searchs or c.individual.f_name =:searchs")
+    Customer findCust_name(@Param("searchs") String searchs);
+
     @Query("SELECT c.individual FROM Customer c Where c.individual.cust_id =:cust_id")
     List<Customer> findAll1(@Param("cust_id") Integer cust_id);
     @Query("SELECT c.business FROM Customer c Where c.business.cust_id =:cust_id")
@@ -43,4 +46,7 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer>{
     void saves(@Param("cust_id") Integer cust_id,@Param("address") String address,@Param("city") String city,
         @Param("cust_type_cd") String cust_type_cd,@Param("fed_id") String fed_id,@Param("postal_code") String postal_code,
         @Param("state") String state);
+
+    @Query("SELECT u FROM Customer u WHERE u.userName =:userName AND u.passWord =:passWord")
+    Customer login(@Param("userName") String userName,@Param(("passWord")) String passWord);
 }

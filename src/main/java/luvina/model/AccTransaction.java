@@ -16,6 +16,7 @@ public class AccTransaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int txnId;
 
+    @Column(name = "amount")
     float amount;
 
     @CreationTimestamp
@@ -26,14 +27,23 @@ public class AccTransaction {
 
     String txnTypeCd;
 
+    @Column(name = "account_id")
     int accountId;
 
-    int executionBranchId;
-
-    int tellerEmpId;
+//    int executionBranchId;
+//
+//    int tellerEmpId;
 
     public AccTransaction(float amount, int accountId) {
         this.amount = amount;
         this.accountId = accountId;
+    }
+
+    public float getAmount() {
+        return amount;
+    }
+
+    public void setAmount(float amount) {
+        this.amount = amount;
     }
 }

@@ -18,7 +18,7 @@ import javax.validation.Valid;
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
-    
+
     @GetMapping("/customer")
     public String index(Model model) {
         model.addAttribute("customers", customerService.findAll());
@@ -36,14 +36,6 @@ public class CustomerController {
     public String create(Model model) {
         model.addAttribute("customer", new Customer());
         return "customerFormCreate";
-    }
-
-    @GetMapping("/login")
-    public String login(Customer user ) {
-        if (user != null) {
-            return "redirect:/customer";
-        }
-        return "/login";
     }
 
     @GetMapping("/customer/search")
@@ -106,6 +98,19 @@ public class CustomerController {
     public String off(@PathVariable Integer cust_id, Model model) {
         model.addAttribute("customers", customerService.findAll3(cust_id));
         return "officerList";
+    }
+
+    @GetMapping("/home")
+    public String index() {
+        return "/login";
+    }
+
+    @PostMapping("/login")
+    public String login(@Valid Customer customer) {
+        boolean a ;
+        a = customerService.login(customer.getUserName(),customer.getPassWord());
+        if (a) return "/customerList";
+        else return "/customerList";
     }
 
 }
