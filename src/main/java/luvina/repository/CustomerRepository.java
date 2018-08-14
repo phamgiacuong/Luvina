@@ -33,8 +33,8 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer>{
 //            "or c.officer.officer_id LIKE CONCAT('%',:search,'%') or c.officer.end_date LIKE CONCAT('%',:search,'%')  or c.officer.f_name LIKE CONCAT('%',:search,'%') or c.officer.l_name LIKE CONCAT('%',:search,'%') or c.officer.state_date LIKE CONCAT('%',:search,'%') or c.officer.title LIKE CONCAT('%',:search,'%') ")
     List<Customer> search(@Param("search") String search);
 
-    @Query("SELECT user FROM Customer user WHERE user.userName =:userName")
-    Customer findUser(@Param("userName") String userName);
+//    @Query("SELECT user FROM Customer user WHERE user.userName =:userName")
+//    Customer findUser(@Param("userName") String userName);
 
     @Transactional
     @Modifying
@@ -44,8 +44,8 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer>{
         @Param("cust_type_cd") String cust_type_cd,@Param("fed_id") String fed_id,@Param("postal_code") String postal_code,
         @Param("state") String state);
     
-    @Transactional
-    @Modifying
+//    @Transactional
+//    @Modifying
      @Query("SELECT user FROM Customer user WHERE user.user_name =:user_name AND user.password =:password")
     Customer find_login(@Param("user_name") String user_name,@Param(("password")) String password);
 }

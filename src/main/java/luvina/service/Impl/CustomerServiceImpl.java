@@ -58,10 +58,10 @@ public class CustomerServiceImpl implements CustomerService {
     public void deleteByCust_id(Integer cust_id) {
         customerRepository.deleteByCust_id(cust_id);
     }
-    @Override
-    public Customer findCustomer(String user) {
-        return customerRepository.findUser(user);
-    }
+//    @Override
+//    public Customer findCustomer(String user) {
+//        return customerRepository.findUser(user);
+//    }
 
     protected Customer user ;  // Bien toan cuc , luu gia tri user da dang nhap
     @Override

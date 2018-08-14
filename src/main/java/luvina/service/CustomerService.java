@@ -25,7 +25,7 @@ public interface CustomerService {
     //xoa 1 customer theo Cust_id
     void deleteByCust_id(Integer cust_id);
 
-    Customer findCustomer(String userName);
+//    Customer findCustomer(String userName);
 
      // Login thanh cong se tra ve gia tri true 
     

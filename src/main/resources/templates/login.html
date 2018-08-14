@@ -11,9 +11,9 @@
 		
 		
         <h1>Login to continue</h1>
-		<form th:action="@{/login}" method="POST">
-			<input type="text" th:object="${user_name}"placeholder="Username" /><br />
-			<input type="password" th:object="${password}" placeholder="Password" /><br />
+		<form th:action="@{/login}"  method="POST" th:object="${customer}">
+			<input type="text" th:field="*{user_name}"placeholder="Username" /><br />
+			<input type="password" th:field="*{password}" placeholder="Password" /><br />
 			<button type="submit">Login</button> <br />
 		</form>
 	</div>

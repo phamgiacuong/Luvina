@@ -18,7 +18,13 @@ import javax.validation.Valid;
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
-    
+
+    @GetMapping("")
+    public String home(Model model) {
+        model.addAttribute("customer", new Customer());
+        return "login";
+    }
+
     @GetMapping("/customer")
     public String index(Model model) {
         model.addAttribute("customers", customerService.findAll());
@@ -101,14 +107,24 @@ public class CustomerController {
         return "officerList";
     }
 
-    @GetMapping("/login") 
-    public String login(@RequestParam("user_name") String user_name,@RequestParam("password") String password ) {
+    @PostMapping("/login")
+    public String login(@RequestParam("user_name") String user_name,@RequestParam("password") String password,Model model ) {
         boolean a ;
         a = customerService.login(user_name, password);
         if (a)
-       return "/home";
-        else return "/login_error";
+       return "home";
+        else{
+            model.addAttribute("customer", new Customer());
+            return "login";
+        }
         
+    }
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        model.addAttribute("customer", new Customer());
+        return "login";
+
     }
 
 }
