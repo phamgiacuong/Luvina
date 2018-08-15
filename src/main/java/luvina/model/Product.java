@@ -23,17 +23,16 @@ public class Product {
     Date dateRetired;
     @Column(name = "name")
     String name;
+    @Column(name = "price")
+    Float price;
 //    @Column(name = "product_type_cd")
 //    String productTypeCd;
-
-    
     @ManyToOne
     @JoinColumn(name = "product_type_cd")
     private ProductType productType;
 
     @Transient
     private int amount;
-
 
     public Product(){}
 

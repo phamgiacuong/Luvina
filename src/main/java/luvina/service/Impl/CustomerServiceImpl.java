@@ -45,6 +45,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Customer findCust_Name(String searchs) { return customerRepository.findCust_name(searchs);}
+
+    @Override
     public void saves(Customer customer) {
         customerRepository.saves(customer.getCust_id(),customer.getAddress(),customer.getCity(),customer.getCust_type_cd(),customer.getFed_id(),customer.getPostal_code(),customer.getState());
     }
@@ -63,7 +66,7 @@ public class CustomerServiceImpl implements CustomerService {
 //        return customerRepository.findUser(user);
 //    }
 
-    protected Customer user ;  // Bien toan cuc , luu gia tri user da dang nhap
+    public static Customer user ;  // Bien toan cuc , luu gia tri user da dang nhap
     @Override
     public boolean login(String user_name, String password) {
         
@@ -71,4 +74,5 @@ public class CustomerServiceImpl implements CustomerService {
        if(user==null) return false;
        else return true;
     }
+
 }

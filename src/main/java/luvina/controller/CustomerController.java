@@ -44,7 +44,6 @@ public class CustomerController {
         return "customerFormCreate";
     }
 
-    
     @GetMapping("/customer/search")
     public String search(@RequestParam("searchs") String searchs, Model model) {
         if (searchs.equals("")) {
@@ -90,11 +89,13 @@ public class CustomerController {
         redirect.addFlashAttribute("success", "Saved customer successfully!");
         return "redirect:/customer";
     }
+
     @GetMapping("/customer/{cust_id}/ind")
     public String ind(@PathVariable Integer cust_id, Model model) {
         model.addAttribute("customers", customerService.findAll1(cust_id));
         return "individualList";
     }
+
     @GetMapping("/customer/{cust_id}/bus")
     public String bus(@PathVariable Integer cust_id, Model model) {
         model.addAttribute("customers", customerService.findAll2(cust_id));
@@ -108,16 +109,16 @@ public class CustomerController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam("user_name") String user_name,@RequestParam("password") String password,Model model ) {
-        boolean a ;
+    public String login(@RequestParam("user_name") String user_name, @RequestParam("password") String password, Model model) {
+        boolean a;
         a = customerService.login(user_name, password);
         if (a)
-       return "home";
-        else{
+            return "home";
+        else {
             model.addAttribute("customer", new Customer());
             return "login";
         }
-        
+
     }
 
     @GetMapping("/login")

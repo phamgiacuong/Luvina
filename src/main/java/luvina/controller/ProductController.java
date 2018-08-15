@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import static luvina.service.Impl.CustomerServiceImpl.user;
+
 @Controller
 public class ProductController {
     @Autowired
@@ -90,7 +92,7 @@ public class ProductController {
     @PostMapping("/product/buy")
     public String buy(Product product, BindingResult result, RedirectAttributes redirect) {
         //lay custid o day
-        int cust_id = 1;
+        int cust_id = user.getCust_id();
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors().get(0));
             return "orderForm";

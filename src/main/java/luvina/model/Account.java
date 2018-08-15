@@ -29,13 +29,22 @@ public class Account {
 
     String status;
 
+    @Column(name = "cust_id")
     int custId;
 
     int openBranchId;
 
     int openEmpId;
 
+    @Column(name = "product_Cd")
     String productCd;
+
+    @OneToOne
+    @JoinColumn(name = "accountId")
+    private AccTransaction accTransaction;
+    @OneToOne
+    @JoinColumn(name = "product_Cd", insertable=false, updatable=false )
+    private Product product;
 
     public Account(float availBalance, String status, int custId, int openBranchId, int openEmpId, String productCd) {
         this.availBalance = availBalance;

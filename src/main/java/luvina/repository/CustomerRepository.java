@@ -9,15 +9,20 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface CustomerRepository extends CrudRepository<Customer, Integer>{
+public interface CustomerRepository extends CrudRepository<Customer, Integer> {
     //tìm kiem 1 product theo cust_id
     @Query("SELECT c FROM Customer c WHERE c.cust_id =:cust_id")
     Customer findCust_id(@Param("cust_id") Integer cust_id);
 
+    @Query("SELECT c FROM Customer c WHERE c.individual.l_name =:searchs or c.individual.f_name =:searchs")
+    Customer findCust_name(@Param("searchs") String searchs);
+
     @Query("SELECT c.individual FROM Customer c Where c.individual.cust_id =:cust_id")
     List<Customer> findAll1(@Param("cust_id") Integer cust_id);
+
     @Query("SELECT c.business FROM Customer c Where c.business.cust_id =:cust_id")
     List<Customer> findAll2(@Param("cust_id") Integer cust_id);
+
     @Query("SELECT c.officer FROM Customer c Where c.officer.cust_id =:cust_id")
     List<Customer> findAll3(@Param("cust_id") Integer cust_id);
 
@@ -39,13 +44,14 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer>{
     @Transactional
     @Modifying
     @Query("UPDATE Customer c SET c.address =:address , c.city =:city, c.cust_type_cd =:cust_type_cd," +
-          "  c.fed_id =:fed_id, c.postal_code=:postal_code, c.state =:state WHERE cust_id =:cust_id")
-    void saves(@Param("cust_id") Integer cust_id,@Param("address") String address,@Param("city") String city,
-        @Param("cust_type_cd") String cust_type_cd,@Param("fed_id") String fed_id,@Param("postal_code") String postal_code,
-        @Param("state") String state);
-    
-//    @Transactional
+            "  c.fed_id =:fed_id, c.postal_code=:postal_code, c.state =:state WHERE cust_id =:cust_id")
+    void saves(@Param("cust_id") Integer cust_id, @Param("address") String address, @Param("city") String city,
+               @Param("cust_type_cd") String cust_type_cd, @Param("fed_id") String fed_id, @Param("postal_code") String postal_code,
+               @Param("state") String state);
+
+    //    @Transactional
 //    @Modifying
-     @Query("SELECT user FROM Customer user WHERE user.user_name =:user_name AND user.password =:password")
-    Customer find_login(@Param("user_name") String user_name,@Param(("password")) String password);
+    @Query("SELECT user FROM Customer user WHERE user.user_name =:user_name AND user.password =:password")
+    Customer find_login(@Param("user_name") String user_name, @Param(("password")) String password);
+
 }
